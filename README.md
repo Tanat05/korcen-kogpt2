@@ -99,36 +99,7 @@ while True:
     else:
         print("It's a normal sentence.")  # 정상 문장
 ```
-## 참고 자료 (Reference)
-- vilm/vulture-40B
-- beomi/llama-2-ko-70b
-```
-@misc {l._junbum_2023,
-    author       = { {L. Junbum} },
-    title        = { llama-2-ko-70b },
-    year         = 2023,
-    url          = { https://huggingface.co/beomi/llama-2-ko-70b },
-    doi          = { 10.57967/hf/1130 },
-    publisher    = { Hugging Face }
-}
-```
-- LG AI Research/EXAONE-v3.0-Instruct-7.8B
-```
-@article{exaone-3.0-7.8B-instruct,
-  title={EXAONE 3.0 7.8B Instruction Tuned Language Model},
-  author={LG AI Research},
-  journal={arXiv preprint arXiv:2408.03541},
-  year={2024}
-}
-```
+
 - [SKT-AI/KoGPT2](https://github.com/SKT-AI/KoGPT2)
-- [Toxic_comment_data](https://github.com/songys/Toxic_comment_data)
 - [[NDC] 딥러닝으로 욕설 탐지하기](https://youtu.be/K4nU7yXy7R8)
 - [머신러닝 부적절 텍스트 분류:실전편](https://medium.com/watcha/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EB%B6%80%EC%A0%81%EC%A0%88-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%B6%84%EB%A5%98-%EC%8B%A4%EC%A0%84%ED%8E%B8-57587ecfae78)
-
-## 라이선스 (License)
-모든 korcen은 Apache-2.0 라이선스 하에 공개됩니다. 모델 및 코드를 사용할 경우 라이선스 내용을 준수해주세요.
-
-- 라이선스 고지 및 저작권 고지 필수 (일반인이 접근 가능한 부분에 표시)
-
-Copyright © All rights reserved.
