@@ -1,5 +1,6 @@
 <div align="center">
-  <h1>Korcen-ML</h1>
+  <h1>Korcen-kogpt2</h1>
+  <h2>This failure is the seed of innovation.</h2>
 </div>
 
 <p align="center">
