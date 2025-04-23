@@ -45,6 +45,7 @@
 | [korcen](https://github.com/KR-korcen/korcen)             |                                                                                             0.7121 |                                                                                              0.8415 |                                                                                                   0.6800 |                                                                                                                                   0.6305 |                                                                                                                               0.4479 |
 | TF [VDCNN_KOGPT2](https://github.com/KR-korcen/korcen-ml/tree/main/model) (23.06.15) |                                                                                             0.7545 |                                                                                              0.7824 |                                                                                                          |                                                                                                                                   0.7055 |                                                                                                                               0.6875 |
 </div>
+
 ## 예제 (Example)
 
 ```python
