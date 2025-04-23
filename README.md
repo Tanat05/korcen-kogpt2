@@ -7,36 +7,25 @@
   <img src="https://user-images.githubusercontent.com/85154556/171998341-9a7439c8-122f-4a9f-beb6-0e0b3aad05ed.png" alt="131_20220604170616">
 </p>
 
-<p align="center">
-  korcen-ml은 기존 키워드 기반 korcen의 우회가 쉽다는 단점을 극복하기 위해<br>
-  딥러닝을 통해 정확도를 향상시키려는 프로젝트입니다.
-</p>
+"Intelligent Filtering: Detecting Nuance and Context with Machine Learning."
 
-<p align="center">
-  현재 KoGPT2 모델만 공개하고 있으며, 모델 파일은 <a href="https://github.com/KR-korcen/korcen-ml/tree/main/model">여기</a>에서 확인 가능합니다.<br>
-  더 많은 모델 파일과 학습 데이터를 원하시면 문의해주세요.
-</p>
+Moving beyond keyword matching, this project introduces a machine learning-powered profanity filter. By analyzing context and linguistic patterns, it aims to identify and filter out offensive language more accurately and intelligently, even when subtle variations or creative spellings are used.
 
-<div align="center">
+[Korcen](https://github.com/KR-korcen/korcen): original before innovation.
 
-| 모델                    | 데이터 문장 수 |
-| ---------------------- | -------------: |
-| [VDCNN_KOGPT2](https://github.com/KR-korcen/korcen-ml/tree/main/model) (23.06.15) |     2,000,000 |
+[Korcen-13M-EXAONE](https://github.com/Tanat05/Korcen-13M-EXAONE): This failure, though another, is a better one.
+
+# Model Overview
+```
+total samples: 2,000,000
+Training samples: 1,800,000
+Validation samples: 200,000
+```
+
+Tokenizer: SKT-AI/KoGPT2
 
 
-</div>
-
-<br>
-
-키워드 기반 기존 라이브러리:  [py version](https://github.com/KR-korcen/korcen), [ts version](https://github.com/KR-korcen/korcen.ts)
-
-[서포트 디스코드 서버](https://discord.gg/wyTU3ZQBPE)
-
-## 모델 검증
-
-<p>
-  데이터마다 욕설의 기준이 달라 오차가 있을 수 있음을 감안하고 확인하시기 바랍니다.
-</p>
+# Verification
 
 <div align="center">
 
@@ -46,7 +35,7 @@
 | TF [VDCNN_KOGPT2](https://github.com/KR-korcen/korcen-ml/tree/main/model) (23.06.15) |                                                                                             0.7545 |                                                                                              0.7824 |                                                                                                          |                                                                                                                                   0.7055 |                                                                                                                               0.6875 |
 </div>
 
-## 예제 (Example)
+## Example
 
 ```python
 # py: 3.10, tf: 2.10
@@ -57,42 +46,38 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 maxlen = 1000
 
-model_path = 'vdcnn_model.h5'  # 모델 파일 경로
-tokenizer_path = "tokenizer.pickle"  # 토크나이저 파일 경로
+model_path = 'vdcnn_model.h5'
+tokenizer_path = "tokenizer.pickle"
 
-# 모델 로드
 model = tf.keras.models.load_model(model_path)
 
-# 토크나이저 로드
 with open(tokenizer_path, "rb") as f:
     tokenizer = pickle.load(f)
 
 def preprocess_text(text):
-    text = text.lower()  # 소문자 변환
+    text = text.lower()
     return text
 
 def predict_text(text):
     sentence = preprocess_text(text)
-    # 토크나이저를 사용하여 문장을 인코딩
     encoded_sentence = tokenizer.encode_plus(
         sentence,
         max_length=maxlen,
-        padding="max_length",  # 최대 길이에 맞게 패딩
-        truncation=True  # 최대 길이 초과 시 잘라냄
+        padding="max_length",
+        truncation=True
     )['input_ids']
 
     sentence_seq = pad_sequences([encoded_sentence], maxlen=maxlen, truncating="post")
-    prediction = model.predict(sentence_seq)[0][0]  # 예측 수행
+    prediction = model.predict(sentence_seq)[0][0]
     return prediction
 
-# 사용자 입력 및 결과 출력
 while True:
-    text = input("Enter the sentence you want to test: ")  # 테스트할 문장 입력
+    text = input("Enter the sentence you want to test: ")
     result = predict_text(text)
     if result >= 0.5:
-        print("This sentence contains abusive language.")  # 욕설 포함
+        print("This sentence contains abusive language.")
     else:
-        print("It's a normal sentence.")  # 정상 문장
+        print("It's a normal sentence.")
 ```
 
 - [SKT-AI/KoGPT2](https://github.com/SKT-AI/KoGPT2)
